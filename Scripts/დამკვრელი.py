@@ -5,21 +5,23 @@ import numpy as np
 import matplotlib.pyplot as plt
 import sys
 
-p=pyaudio.PyAudio()
+ენა=pyaudio.PyAudio()
 
-infile=sys.argv[1]
-samples=np.load(infile)
-stream=p.open(format=pyaudio.paFloat32, channels = 1, rate=44100,output=True)
+ფაილი=sys.argv[1]	#მიიღოს შემდეგი არგუმენტი როგორც ცვლადი
+ხმა=np.load(ფაილი)	#ეს გენერირებული ფაილია
+პირი=ენა.open(format=pyaudio.paFloat32, channels = 1, rate=44100,output=True)	#ეს ილაპარაკებს ენის დახმარებით
 
-plt.close('all')
+plt.close('all')	#მაინც, ყოველი შემთხვევისთვის
 plt.plot(samples)
-plt.title("ეს სირობა გამოგივიდა")
+plt.title("არ დაიჯერო რომ ასე გამოიყურება ხმა")
 plt.grid(True,which='both')
 plt.axhline(y=0,color='k')
 plt.show()
-while True:
-	stream.write(samples)
+#ეს ზედები ყველა დახატვისთვისაა, არაფერი საჭირო და მნიშვნელოვანი
 
-stream.stop_stream()
-stream.close()
-p.terminate()
+while True:
+	პირი.write(ხმა)	#გამოსცეს ხმა
+
+პირი.stop_stream()	#გაჩუმდეს
+პირი.close()	#დაკეტოს პირი
+ენა.terminate()	#დაივიწყოს რა არის ენა
