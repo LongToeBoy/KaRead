@@ -12,7 +12,7 @@ import sys
 პირი=ენა.open(format=pyaudio.paFloat32, channels = 1, rate=44100,output=True)	#ეს ილაპარაკებს ენის დახმარებით
 
 plt.close('all')	#მაინც, ყოველი შემთხვევისთვის
-plt.plot(samples)
+plt.plot(ხმა)
 plt.title("არ დაიჯერო რომ ასე გამოიყურება ხმა")
 plt.grid(True,which='both')
 plt.axhline(y=0,color='k')
