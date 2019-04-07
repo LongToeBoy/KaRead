@@ -11,16 +11,16 @@ import sys
 ხმა=np.load(ფაილი)	#ეს გენერირებული ფაილია
 პირი=ენა.open(format=pyaudio.paFloat32, channels = 1, rate=44100,output=True)	#ეს ილაპარაკებს ენის დახმარებით
 
-plt.close('all')	#მაინც, ყოველი შემთხვევისთვის
-plt.plot(ხმა)
-plt.title("არ დაიჯერო რომ ასე გამოიყურება ხმა")
-plt.grid(True,which='both')
-plt.axhline(y=0,color='k')
-plt.show()
+#plt.close('all')	#მაინც, ყოველი შემთხვევისთვის
+#plt.plot(ხმა)
+#plt.title("არ დაიჯერო რომ ასე გამოიყურება ხმა")
+#plt.grid(True,which='both')
+#plt.axhline(y=0,color='k')
+#plt.show()
 #ეს ზედები ყველა დახატვისთვისაა, არაფერი საჭირო და მნიშვნელოვანი
 
 while True:
-	პირი.write(ხმა)	#გამოსცეს ხმა
+	პირი.write(2*ხმა)	#გამოსცეს ხმა
 
 პირი.stop_stream()	#გაჩუმდეს
 პირი.close()	#დაკეტოს პირი
